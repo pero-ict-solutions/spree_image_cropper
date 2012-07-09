@@ -6,7 +6,7 @@ Installation
 
 add this to your `Gemfile`
 ```ruby
-gem "spree_image_cropper", :git => "spree_image_cropper"
+gem "spree_image_cropper", :git => "git://github.com/pero-ict-solutions/spree_image_cropper.git"
 ```
 
 then run:
