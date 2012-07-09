@@ -1,0 +1,51 @@
+<%= content_for :head do %>
+<script type="text/javascript">
+  $(function() {
+    $('#cropbox').Jcrop({
+      onChange: update_crop,
+      onSelect: update_crop
+    });
+  });
+
+  function update_crop(coords) {
+
+    var rx = 100/coords.w;
+    var ry = 100/coords.h;
+
+    $('#crop_preview').css({
+      marginLeft: '-' + Math.round(rx * 400) + 'px',
+      marginTop: '-' + Math.round(ry * 360) + 'px'
+    });
+
+    var ratio = <%= @image.attachment_geometry(:original).width %> / <%= @image.attachment_geometry(:crop).width %>;
+
+    $('#crop_x').val(coords.x * ratio);
+    $('#crop_y').val(coords.y * ratio);
+    $('#crop_w').val(coords.w * ratio);
+    $('#crop_h').val(coords.h * ratio);
+    $('#ratio').val(ratio);
+  }
+</script>
+<% end %>
+<h2>Crop image</h2>
+<p>Draw an area to mark the crop.</p>
+
+<%= image_tag @image.attachment.url(:crop), :id => "cropbox" %>
+
+<!--
+<h4>Preview</h4>
+<div style="width: 400px; height: 360px; overflow: hidden; border: 1px solid #ccc;">
+  <%= image_tag @image.attachment.url(:crop), :id => "crop_preview" %>
+</div>
+-->
+
+<%= form_for [:admin, @product, @image] do |form| %>
+  <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+    <%= form.hidden_field attribute, :id => attribute %>
+  <% end %>
+
+  <p class="form-buttons" data-hook="buttons">
+    <%= button "Crop" %>
+    <%= t(:or) %> <%= link_to t('actions.cancel'), admin_product_images_url(@product) %>
+  </p>
+<% end %>
