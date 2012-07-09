@@ -15,13 +15,9 @@ then run:
     $ bundle exec rails generate spree_image_cropper:install
 
 
-Add this to the `config/initializers/spree.rb`
+If you need to change the default Spree Image styles you can override them well by redefining the styles hash like this:
 
-```ruby
-Spree::Image.attachment_definitions[:attachment][:styles][:crop] = '600x600>'
-```
-
-If you need to change the default Spree Image styles you can override them as well by redefining the styles hash like this:
+in `config/initializers/spree.rb` for example.
 
 ```ruby
 Spree::Image.attachment_definitions[:attachment][:styles] = {

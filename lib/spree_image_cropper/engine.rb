@@ -15,6 +15,7 @@ module SpreeImageCropper
       Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
+      Spree::Image.attachment_definitions[:attachment][:styles][:crop] = '600x600>'
       Spree::Image.attachment_definitions[:attachment][:processors] = [:cropper]
     end
 
