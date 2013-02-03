@@ -54,7 +54,7 @@
   <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
     <%= form.hidden_field attribute, :id => attribute %>
   <% end %>
-  <%= form.hidden_field :viewable_id, :value => @product.id %>
+  <%= form.hidden_field :viewable_id, :value => @image.viewable_id %>
 
   <p class="form-buttons" data-hook="buttons">
     <%= button "Crop" %>
