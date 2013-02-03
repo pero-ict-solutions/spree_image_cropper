@@ -55,8 +55,6 @@
     <%= form.hidden_field attribute, :id => attribute %>
   <% end %>
   <%= form.hidden_field :viewable_id, :value => @product.id %>
-  <%= form.label :crop_only_thumb, "Crop only tumbnail?" %>
-  <%= form.check_box :crop_only_thumb%>
 
   <p class="form-buttons" data-hook="buttons">
     <%= button "Crop" %>
