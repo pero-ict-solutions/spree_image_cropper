@@ -12,7 +12,8 @@ Spree::Image.class_eval do
 
   def attachment_geometry(style = :original)
     @geometry ||= {}
-    @geometry[style] ||= Paperclip::Geometry.from_file(attachment.path(style))
+    attachment_path = (attachment.options[:storage] == :s3) ? attachment.url(style) : attachment.path(style)
+    @geometry[style] ||= Paperclip::Geometry.from_file(attachment_path)
   end
 
   private
