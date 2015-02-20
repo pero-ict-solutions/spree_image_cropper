@@ -43,18 +43,18 @@
 
 <h2>Crop image</h2>
 <p>Draw an area to mark the crop.</p>
-<%= image_tag @image.attachment.url(:crop), :id => "cropbox" %>
+<%= image_tag @image.attachment.url(:crop), id: "cropbox" %>
 
 <h4>Preview</h4>
 <div style="width: <%=@product_dimension[0]%>px; height: <%=@product_dimension[1]%>px; overflow: hidden;">
-  <%= image_tag @image.attachment.url(:crop), :id => "crop_preview" %>
+  <%= image_tag @image.attachment.url(:crop), id: "crop_preview" %>
 </div>
 
-<%= form_for [:admin, @product, @image] do |form| %>
+<%= form_for [:admin, @product, @image], html: {multipart: true} do |form| %>
   <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
-    <%= form.hidden_field attribute, :id => attribute %>
+    <%= form.hidden_field attribute, id: attribute %>
   <% end %>
-  <%= form.hidden_field :viewable_id, :value => @image.viewable_id %>
+  <%= form.hidden_field :viewable_id, value: @image.viewable_id %>
 
   <p class="form-buttons" data-hook="buttons">
     <%= button "Crop" %>

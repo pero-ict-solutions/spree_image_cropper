@@ -1,5 +1,4 @@
 Spree::Product.class_eval do
-  # attr_accessible :bulk_images
   attr_accessor :bulk_images
   before_save :process_bulk_images
 

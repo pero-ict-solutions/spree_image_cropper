@@ -1,1 +1,0 @@
-//= require admin/jquery.Jcrop.min.js
