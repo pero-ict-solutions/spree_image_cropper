@@ -3,6 +3,7 @@
 .#*
 .DS_Store
 .idea
+.idea/*
 .project
 coverage
 Gemfile.lock
@@ -11,3 +12,4 @@ nbproject
 pkg
 *.swp
 spec/dummy
+config/*.yml
