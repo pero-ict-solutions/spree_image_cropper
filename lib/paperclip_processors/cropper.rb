@@ -2,7 +2,8 @@ module Paperclip
   class Cropper < Thumbnail
     def transformation_command
 
-      spr_cmd = super.join(" ")
+      spr_cmd = super
+      spr_cmd = spr_cmd.join(" ") if spr_cmd
 
       return super if spr_cmd.present? and spr_cmd.include?(Spree::Image.attachment_definitions[:attachment][:styles][:crop])
       if crop_command
