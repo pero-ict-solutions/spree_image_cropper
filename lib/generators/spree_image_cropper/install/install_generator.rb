@@ -3,11 +3,11 @@ module SpreeImageCropper
     class InstallGenerator < Rails::Generators::Base
 
       def add_javascripts
-        append_file 'app/assets/javascripts/application.js', "//= require spree/backend/spree_image_cropper\n"
+        append_file 'vendor/javascripts/all.js', "//= require spree/backend/spree_image_cropper\n"
       end
 
       def add_stylesheets
-        inject_into_file 'app/assets/stylesheets/application.css', " *= require spree/backend/spree_image_cropper\n", before: /\*\//, verbose: true
+        inject_into_file 'vendor/stylesheets/all.css', " *= require spree/backend/spree_image_cropper\n", before: /\*\//, verbose: true
       end
 
       def add_migrations
